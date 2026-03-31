@@ -62,20 +62,22 @@
 
         <!-- Caja 2 -->
 
-        <div class="card mb-4" style="width: 18rem;">
+        <div class="card mb-4" style="width: 25rem;">
             <div class="card-body">
                 <h5 class="card-title">Ejercicio 2:</h5>
 
                 <input type="text" class="form-control mb-3" id="input2" placeholder="Ingrese un nombre">
 
-                <p class="card-text">Lista de asistencia</p>
-
-                <button class="btn btn-primary" onclick="filaDeVacunacion()">Ejecutar</button>
-
+                <p class="card-text">Módulo de Salud</p>
+                <div class="botones mb-4 d-grid gap-2 d-md-block mb-4">
+                    <button class="btn btn-primary" onclick="agregarNormal()">Turno Normal</button>
+                    <button class="btn btn-primary" onclick="agregarUrgencia()">Urgencia</button>
+                    <button class="btn btn-primary" onclick="atenderSiguiente()">Ejecutar</button>
+                </div>
                 <div id="container2" class="mt-4 d-none">
                     <h5>Resultado</h5>
                     <div id="result2" class="alert alert-success fw-bold">
-        
+
                     </div>
                 </div>
             </div>
@@ -91,7 +93,7 @@
 
                 <p class="card-text">Lista de asistencia</p>
 
-                <button class="btn btn-primary" onclick="delivery()">Ejecutar</button>
+                <button class="btn btn-primary" onclick="verificarCodigo() ">Ejecutar</button>
 
                 <div id="container3" class="mt-4 d-none">
                     <h5>Resultado</h5>
@@ -99,7 +101,6 @@
                 </div>
             </div>
         </div>
-    
     </main>
 
     <!-- Script JS -->

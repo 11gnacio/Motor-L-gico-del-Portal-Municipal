@@ -22,21 +22,79 @@ Regla: El resultado debe mostrarse como una lista ordenada en el HTML. <ol>
 
 let pacientes = ["Carlos", "María", "Diego"];
 
-function filaDeVacunacion() {
+function agregarNormal() {
     const input = document.getElementById("input2");
-    const result = document.getElementById("result2");
-    const container = document.getElementById("container2");
-
     let nombre = input.value.trim();
 
     if (nombre !== "") {
-
         pacientes.push(nombre);
-
-        result.textContent = "Próximos a atender: " + pacientes.join(", ");
-
-        container.classList.remove("d-none");
+        renderizarLista();
     }
-      
     input.value = "";
+}
+
+function agregarUrgencia() {
+    const input = document.getElementById("input2");
+    let nombre = input.value.trim();
+
+    if (nombre !== "") {
+        pacientes.unshift(nombre); 
+        renderizarLista();
+    }
+    input.value = "";
+}
+
+
+function atenderSiguiente() {
+    if (pacientes.length > 0) {
+        let atendido = pacientes.shift();
+        alert("Atendiendo ahora a: " + atendido);
+        renderizarLista();
+    }
+}
+
+function renderizarLista() {
+    const resultContainer = document.getElementById("result2");
+   
+    resultContainer.innerHTML = "";
+
+    const listaOrdenada = document.createElement("ol");
+
+    pacientes.forEach(nombre => {
+        const item = document.createElement("li");
+        item.textContent = nombre;
+        listaOrdenada.appendChild(item);
+    });
+
+    resultContainer.appendChild(listaOrdenada);
+}
+
+
+/*3. Módulo de Subsidios: Buscador de Beneficiarios (Ciclos e If)
+Verificar si un RUT o nombre está en el listado de entrega de beneficios.
+Lógica: Tener un arreglo con al menos 6 nombres. Usar un ciclo for para buscar si el dato ingresado existe en la lista.
+Regla: La función debe devolver "Beneficiario Verificado" o "No registrado".
+*/
+
+let codigosValidos = ["Ignacio", "Leo","Javiera", "Akon", "Daniel", "Marcelo"];
+
+function verificarCodigo() {
+    const inputTres = document.getElementById("input3");
+    const resultTres = document.getElementById("result3");
+    const containerTres = document.getElementById("container3");
+
+    let accion = inputTres.value.trim();
+
+    let mensaje = "No registrado";
+
+    for (let i = 0; i < codigosValidos.length; i++) {
+        if (accion == codigosValidos[i]) {
+            mensaje = "Beneficiario Verificado";
+        }
+    }
+
+    resultTres.textContent = mensaje;
+
+    containerTres.classList.remove("d-none");
+    inputTres.value = "";
 }
